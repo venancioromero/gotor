@@ -2,9 +2,10 @@ package main
 
 import (
 	"flag"
-	"init_program/config"
-	"init_program/constants"
-	"init_program/loggerFactory"
+	"gotor/config"
+	"gotor/constants"
+	"gotor/loggerFactory"
+	"gotor/torProxy"
 )
 
 var (
@@ -22,9 +23,27 @@ func main() {
 
 	conf := config.LoadConfig(configFile)
 
-	if logLevel == "" {
+	if logLevel != "" {
 		loggerFactory.SetLoggingLevel(logLevel)
 	} else {
 		loggerFactory.SetLoggingLevel(conf.Logging.LogLevel)
 	}
+	logger := loggerFactory.NewLogger()
+
+	tProxy, err := torProxy.NewTorProxy()
+
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	bodyResponse, err := tProxy.Get("http://3g2upl4pq6kufc4m.onion/")
+
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	if bodyResponse != "" {
+		logger.Info(bodyResponse)
+	}
+
 }

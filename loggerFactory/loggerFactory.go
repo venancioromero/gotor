@@ -1,8 +1,8 @@
 package loggerFactory
 
 import (
-	"init_program/constants"
 	log "github.com/sirupsen/logrus"
+	"gotor/constants"
 	"strings"
 )
 

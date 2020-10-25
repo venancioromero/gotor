@@ -14,19 +14,10 @@ const (
 type Logging struct {
 	LogLevel string `toml:"log_level"`
 }
-type Elasticsearch struct {
-	Hosts []string `toml:"hosts"`
-}
-type Kafka struct {
-	Brokers []string `toml:"brokers"`
-}
 
 type Config struct {
-	Logging       Logging       `toml:"logging"`
-	Elasticsearch Elasticsearch `toml:"elasticsearch"`
-	Kafka         Kafka         `toml:"kafka"`
+	Logging Logging `toml:"logging"`
 }
-
 
 func LoadConfig(configFilePath string) Config {
 	if configFilePath == "" {
@@ -52,4 +43,3 @@ func fileExists(filePath string) bool {
 	}
 	return !info.IsDir()
 }
-
