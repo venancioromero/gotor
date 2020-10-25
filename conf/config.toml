@@ -3,3 +3,5 @@ title = "Configuration file"
 [logging]
 log_level="DEBUG" ## Valid values TRACE, DEBUG, INFO, WARN, ERROR, default value INFO
 
+[torProxy]
+url="socks5://127.0.0.1:9050"

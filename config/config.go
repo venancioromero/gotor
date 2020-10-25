@@ -15,8 +15,13 @@ type Logging struct {
 	LogLevel string `toml:"log_level"`
 }
 
+type TorProxy struct {
+	Url string `toml:"url"`
+}
+
 type Config struct {
-	Logging Logging `toml:"logging"`
+	Logging  Logging  `toml:"logging"`
+	TorProxy TorProxy `toml:"torProxy"`
 }
 
 func LoadConfig(configFilePath string) Config {

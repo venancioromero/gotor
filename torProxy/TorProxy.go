@@ -20,9 +20,9 @@ type TorProxy struct {
 	logger *log.Logger
 }
 
-func NewTorProxy() (*TorProxy, error) {
+func NewTorProxy(torProxyUrl string) (*TorProxy, error) {
 	logger := loggerFactory.NewLogger()
-	tbProxyURL, err := url.Parse("socks5://127.0.0.1:9050")
+	tbProxyURL, err := url.Parse(torProxyUrl)
 
 	if err != nil {
 		logger.Fatal("Failed to parse proxy URL: %v\n", err)

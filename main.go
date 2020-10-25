@@ -30,7 +30,7 @@ func main() {
 	}
 	logger := loggerFactory.NewLogger()
 
-	tProxy, err := torProxy.NewTorProxy()
+	tProxy, err := torProxy.NewTorProxy(conf.TorProxy.Url)
 
 	if err != nil {
 		logger.Fatal(err)
